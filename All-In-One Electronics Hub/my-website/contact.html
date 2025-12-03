@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — All-In-One Electronics Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .contact-card {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .contact-card h3 {
+      margin-bottom: 12px;
+    }
+    .contact-input, .contact-textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .contact-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-btn {
+      background: #0099ff;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .contact-btn:hover {
+      background: #0077cc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-area">
+        <img src="assets/images/logo.png" class="logo" alt="Logo">
+        <h1 class="site-title">Electronics Hub</h1>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html"><img src="/my-website/home-icon.png" class="icon"> Home</a></li>
+        <li><a href="about.html"><img src="about.png" class="icon"> About</a></li>
+        <li><a href="services.html"><img src="services.png" class="icon"> Services</a></li>
+        <li><a href="gallery.html"><img src="gallery.png" class="icon"> Gallery</a></li>
+        <li><a href="contact.html"><img src="contact.png" class="icon"> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" style="background:#071029; padding:40px 0;">
+    <div class="container" style="max-width:1100px; margin:0 auto; color:#fff; text-align:center;">
+      <h2 style="font-size:32px; margin-bottom:6px;">Contact Us</h2>
+      <p style="color:#cfeefc;">Have questions? Reach out to our team anytime.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-wrapper">
+
+    <!-- CONTACT FORM -->
+    <div class="contact-card">
+      <h3>Send us a message</h3>
+
+      <form id="contactForm">
+        <label>Name</label>
+        <input type="text" class="contact-input" id="name" required>
+
+        <label>Email</label>
+        <input type="email" class="contact-input" id="email" required>
+
+        <label>Message</label>
+        <textarea class="contact-textarea" id="message" required></textarea>
+
+        <button type="submit" class="contact-btn">Send Message</button>
+
+        <p id="formStatus" style="margin-top:10px; font-size:14px; color:green;"></p>
+      </form>
+    </div>
+
+    <!-- CONTACT DETAILS -->
+    <div class="contact-card">
+      <h3>Contact Information</h3>
+      <p><strong>Email:</strong> electronics.hub@gmail.com</p>
+      <p><strong>Phone:</strong> +63 912 123 1234</p>
+      <p><strong>Location:</strong> Bukidnon State University</p>
+      <br>
+
+      <h3>Find us</h3>
+      <div style="background:#eee; width:100%; height:200px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#555;">
+        Map placeholder
+      </div>
+      <p style="font-size:13px; margin-top:6px; color:#444;">(Loading...)</p>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2025 All-In-One Electronics Hub. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Contact form simple local feedback
+    const form = document.getElementById('contactForm');
+    const statusText = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById('name').value.trim();
+
+      if (name.length < 1) {
+        statusText.textContent = "Please fill out all fields.";
+        statusText.style.color = "red";
+        return;
+      }
+
+      statusText.textContent = `Thanks, ${name}! Your message has been received. (Demo only)`;
+      statusText.style.color = "green";
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
