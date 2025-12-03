@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All-In-One Electronics Hub</title>
+
+  <!-- INLINE STYLES: entire site styling lives here so you don't need styles.css -->
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background:#f4f4f4; color:#222; line-height:1.5; }
+
+    /* NAV */
+    .navbar {
+      background: #0a1628;
+      color: #fff;
+      padding: 14px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-area { display:flex; align-items:center; gap:10px; }
+    .logo { width:44px; height:44px; object-fit:contain; }
+    .site-title { color:#fff; font-size:20px; font-weight:700; }
+    .nav-links { list-style:none; display:flex; gap:18px; align-items:center; }
+    .nav-links a { color:#fff; text-decoration:none; display:flex; gap:6px; align-items:center; font-size:15px; }
+    .nav-links a:hover { color:#7bd6ff; }
+    .icon { width:20px; height:20px; object-fit:contain; }
+
+    /* HERO */
+    .hero { width:100%; position:relative; overflow:hidden; }
+    .hero-img { width:100%; display:block; max-height:460px; object-fit:cover; filter:brightness(0.55); }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align:center;
+      color: white;
+      padding: 0 18px;
+      width: min(980px, 94%);
+    }
+    .hero-text h2 { font-size:40px; margin-bottom:8px; text-shadow: 0 2px 10px rgba(0,0,0,0.45); }
+    .hero-text p { font-size:18px; margin-bottom:12px; color: rgba(255,255,255,0.92); }
+
+    /* Inline search (light style so readable on dark hero) */
+    .inline-search {
+      margin-top:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width: min(760px, 92%);
+    }
+    .inline-search input[type="search"] {
+      flex:1 1 auto;
+      padding:12px 14px;
+      border-radius:8px;
+      border: none;
+      background: rgba(255,255,255,0.96);
+      color: #0b1220;
+      font-size:16px;
+      outline: none;
+      min-width:180px;
+      box-shadow:0 2px 8px rgba(2,6,23,0.3);
+    }
+    .inline-search button {
+      padding:10px 16px;
+      background:#0099ff;
+      border:none;
+      border-radius:8px;
+      color:#fff;
+      font-size:15px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.18);
+    }
+    .inline-search button:active { transform: translateY(1px); }
+    .search-hint { margin-top:8px; font-size:14px; color: rgba(255,255,255,0.9); }
+
+    /* FEATURES */
+    .features { padding:40px 18px; }
+    .section-title { font-size:26px; text-align:center; margin-bottom:26px; color:#111; }
+    .feature-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:20px;
+      max-width:1100px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: #fff;
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      text-align:left;
+    }
+    .feature-icon { width:44px; height:44px; object-fit:cover; margin-bottom:8px; }
+    .feature-card h3 { margin-bottom:8px; font-size:18px; color:#0b1220; }
+    .feature-card p { color:#333; font-size:14px; }
+
+    /* Footer */
+    footer { background:#0a1628; color:#fff; padding:18px; text-align:center; margin-top:34px; }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .hero-text h2 { font-size:28px; }
+      .nav-links { display:none; } /* keep simple for small screens */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVIGATION BAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-area">
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <h1 class="site-title">Electronics Hub</h1>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html"><img src="/my-website/home-icon.png" class="icon" alt="Home"> Home</a></li>
+        <li><a href="about.html"><img src="about.png" class="icon" alt="About"> About</a></li>
+        <li><a href="services.html"><img src="services.png" class="icon" alt="Services"> Services</a></li>
+        <li><a href="gallery.html"><img src="gallery.png" class="icon" alt="Gallery"> Gallery</a></li>
+        <li><a href="contact.html"><img src="contact.png" class="icon" alt="Contact"> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <img src="assets/images/hero-pcb.png" alt="PCB Hero" class="hero-img">
+
+    <div class="hero-text">
+      <h2>All-In-One Electronics Hub</h2>
+      <p>Your tech queries — solved.</p>
+
+      <!-- INLINE SEARCH (replaces the CTA) -->
+      <form id="inlineSearchForm" class="inline-search" onsubmit="return false;" role="search" aria-label="Search site">
+        <input id="inlineSearchInput" type="search" placeholder="Search tutorials, Q&A, or projects..." aria-label="Search the site" autocomplete="off">
+        <button id="inlineSearchBtn" type="button">Search</button>
+      </form>
+
+      <p id="inlineSearchHint" class="search-hint" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- QUICK FEATURES SECTION -->
+  <section class="features">
+    <h2 class="section-title">What We Offer</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="/my-website/Q&A.webp" class="feature-icon" alt="Q&A">
+        <h3>Expert Q&A</h3>
+        <p>Ask electronics-related questions and get verified answers from experienced users.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="/my-website/Knowledge.jpg" class="feature-icon" alt="Knowledge">
+        <h3>Knowledge Base</h3>
+        <p>Browse tutorials, articles, and learning resources for all experience levels.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="/my-website/Showcase.jpg" class="feature-icon" alt="Showcase">
+        <h3>Project Showcase</h3>
+        <p>Explore project builds, PCB designs, and tech innovations created by the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 All-In-One Electronics Hub. All Rights Reserved.</p>
+  </footer>
+
+  <!-- INLINE SCRIPT: search/filter behavior lives here so you don't need to edit script.js -->
+  <script>
+    (function() {
+      // Elements
+      const input = document.getElementById('inlineSearchInput');
+      const btn = document.getElementById('inlineSearchBtn');
+      const hint = document.getElementById('inlineSearchHint');
+      const cards = Array.from(document.querySelectorAll('.feature-card'));
+
+      // Normalize helper
+      function norm(s){ return (s||'').toLowerCase(); }
+
+      function runSearch(){
+        const q = norm(input.value.trim());
+        if(!q){
+          // show all
+          cards.forEach(c => c.style.display = '');
+          hint.textContent = '';
+          return;
+        }
+
+        let shown = 0;
+        cards.forEach(card => {
+          const title = norm(card.querySelector('h3')?.textContent);
+          const desc  = norm(card.querySelector('p')?.textContent);
+          if(title.includes(q) || desc.includes(q)){
+            card.style.display = '';
+            shown++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        hint.textContent = shown === 0 ? `No results for "${input.value}".` : `Showing ${shown} result${shown>1?'s':''} for "${input.value}".`;
+      }
+
+      // Click or Enter runs search; Escape clears
+      if(btn) btn.addEventListener('click', runSearch);
+      if(input){
+        input.addEventListener('keydown', function(e){
+          if(e.key === 'Enter'){ runSearch(); }
+          if(e.key === 'Escape'){ input.value=''; runSearch(); }
+        });
+      }
+
+      // Initialize (show all)
+      document.addEventListener('DOMContentLoaded', runSearch);
+    })();
+  </script>
+</body>
+</html>
